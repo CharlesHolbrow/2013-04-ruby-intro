@@ -26,6 +26,16 @@ class Queue
     @tail = nil
   end
 
+  def length
+    node = @tail
+    length = 0
+    while node do
+      length += 1
+      node = node.next
+    end
+    length
+  end
+
   def push value
     new_node = Node.new(value)
     if @head then
@@ -42,6 +52,7 @@ class Queue
     return unless @tail
     value = @tail.value
     @tail = @tail.next
+    @head = nil unless @tail
     value
   end
 
